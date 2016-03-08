@@ -1,0 +1,24 @@
+- if current_user.present?
+  = link_to 'Create new post', new_post_path
+
+.row
+  .col-md-2
+    %strong Date
+  .col-md-2
+    %strong User
+  .col-md-5
+    %strong Content
+  .col-md-2
+    %strong Actions
+- @posts.each do |post|
+  .row
+    .col-md-2
+      = post.created_at
+    .col-md-2
+      = post.user.first_name
+    .col-md-5
+      = post.content.truncate(50)
+    .col-md-2
+      - if current_user == post.user
+        = link_to 'Edit', edit_post_path(post)
+      = link_to 'Show', post_path(post)

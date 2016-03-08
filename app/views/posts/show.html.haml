@@ -1,0 +1,30 @@
+.row
+  %h2 Post details
+  .row
+    .col-md-2
+      Author
+    .col-md-5
+      = @post.user.email
+
+  .row
+    .col-md-2
+      Content
+    .col-md-8
+      = @post.content
+
+.row
+  %h2 Comments
+  - @post.comments.each do |comment|
+    .row
+      .col-md-2
+        Author
+      .col-md-5
+        = comment.user.email
+
+    .row
+      .col-md-2
+        Content
+      .col-md-5
+        = comment.content
+  %h2 New comment
+  = render 'posts/comments/form', comment: @post.comments.new

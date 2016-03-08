@@ -1,0 +1,8 @@
+= simple_form_for comment, url: post_comments_path(@post) do |f|
+  .row
+    Author:
+    = current_user.email
+  .row
+    = f.input :content, as: :text
+  .row
+    = f.submit 'Create Comment'

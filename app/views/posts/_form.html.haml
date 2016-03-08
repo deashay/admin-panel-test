@@ -1,0 +1,8 @@
+= simple_form_for @post do |f|
+  .row
+    User:
+    = current_user.email
+  .row
+    = f.input :content, as: :text
+  .row
+    = f.submit 'Create'
