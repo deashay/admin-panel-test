@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307112620) do
+ActiveRecord::Schema.define(version: 20160314142820) do
 
   create_table "addresses", force: true do |t|
     t.string "street"
@@ -19,6 +19,24 @@ ActiveRecord::Schema.define(version: 20160307112620) do
     t.string "country"
     t.string "zipcode"
   end
+
+  create_table "admin_users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -38,12 +56,12 @@ ActiveRecord::Schema.define(version: 20160307112620) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                    default: "", null: false
+    t.string   "encrypted_password",       default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",            default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -53,6 +71,15 @@ ActiveRecord::Schema.define(version: 20160307112620) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "address_id"
+    t.string   "twitter_account"
+    t.string   "facebook_account"
+    t.integer  "hours_a_day_on_facebook"
+    t.integer  "posts_a_week_on_facebook"
+    t.integer  "hours_a_day_on_twitter"
+    t.integer  "posts_a_week_on_twitter"
+    t.boolean  "like_cookies"
+    t.boolean  "like_pancakes"
+    t.boolean  "like_tomatoes"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
