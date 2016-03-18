@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.7'
+gem 'rails', '4.2.6'
 gem 'haml'
 gem 'simple_form'
 gem 'devise'
@@ -14,3 +14,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'spring',        group: :development
+gem 'pry'
+gem 'better_errors'
+gem 'binding_of_caller'
